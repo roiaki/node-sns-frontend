@@ -4,9 +4,9 @@ import { Analytics, Face, Gif, Image } from '@mui/icons-material';
 
 export default function Share() {
   return (
-    <div class="share">
-      <div class="shareWrapper">
-        <div class="shareTop">
+    <div className="share">
+      <div className="shareWrapper">
+        <div className="shareTop">
           <img src="/assets/person/1.jpeg" alt="" className="shareProfileImg" />
           <input 
             type="text"
@@ -17,7 +17,7 @@ export default function Share() {
 
         <hr className="shareHr" />
 
-        <form class="shareButtons">
+        <form className="shareButtons">
           <div className="shareOptions">
             <div className="shareOption">
               <Image className="shareIcon" htmlColor='blue' />
