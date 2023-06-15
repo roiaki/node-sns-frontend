@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Post.css";
 import { MoreVert, Photo } from '@mui/icons-material';
 import { Users } from "../../dummyData";
@@ -7,6 +7,15 @@ export default function Post({ post }) {
    const user = Users.filter((user) => user.id === post.id)[0].username;
    console.log(user);
   //  console.log(Users.filter((user) => user.id === post.id)[0].username);
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
+
+  const handleLike = () => {
+    setLike(isLiked ? like - 1 : like + 1 );
+    setIsLiked(!isLiked);
+  }
+  
   return (
     <div className="post">
       <div className="postWrapper">
@@ -33,11 +42,20 @@ export default function Post({ post }) {
 
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img src="./assets/heart.png" alt="" className="likeIcon" />
-            <span className="postLikeCounter">{post.like}がいいねを押した</span>
+            <img 
+              src="./assets/heart.png" 
+              alt="" 
+              className="likeIcon" 
+              onClick={() => handleLike()}
+            />
+            <span className="postLikeCounter">
+              {like}がいいねを押した
+            </span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comment}:コメント</span>
+            <span className="postCommentText">
+              {post.comment}:コメント
+            </span>
           </div>
         </div>
         
