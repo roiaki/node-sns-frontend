@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./Topbar.css";
 import {
   Chat,
@@ -10,7 +11,12 @@ export default function topbar() {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
+        >
           <span className="logo">Real SNS</span>
+        </Link>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
