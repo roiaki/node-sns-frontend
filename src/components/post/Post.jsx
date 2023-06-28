@@ -4,6 +4,7 @@ import { MoreVert, Photo } from '@mui/icons-material';
 import { Users } from "../../dummyData";
 import axios from "axios";
 import { useEffect } from 'react';
+import {format} from "timeago.js";
 
 export default function Post({ post }) {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -15,13 +16,15 @@ export default function Post({ post }) {
   // 1回だけ誘発させる
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get(`/users/${post.userId}`);
-      console.log(response);
-      // console.log(response);
-      setUser(response.data);
+      // const res = await axios.get(`/users/${post.userId}`);
+      console.log(post.userId);
+      const res = await axios.get(`/users?userId=${post.userId}`);
+      console.log("res" + res);
+      setUser(res.data);
+      // console.log(res.data);
     };
     fetchUser();
-  }, []);
+  }, [post.userId]);
 
   const handleLike = () => {
     setLike(isLiked ? like - 1 : like + 1 );
@@ -39,7 +42,7 @@ export default function Post({ post }) {
               className="postProfileImg"
             />
             <span className="postUsername">{user.username}</span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />

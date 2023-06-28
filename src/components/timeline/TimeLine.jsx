@@ -7,6 +7,8 @@ import axios from "axios";
 import { useState } from 'react';
 
 
+
+
 export default function TimeLine() {
   const [posts, setPosts] = useState([]);
 
@@ -14,7 +16,7 @@ export default function TimeLine() {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await axios.get("/posts/timeline/642c1c0422abdc5da422d14f");
-      console.log("test");
+     
       // console.log(response);
       setPosts(response.data);
     };
