@@ -5,6 +5,7 @@ import { Users } from "../../dummyData";
 import axios from "axios";
 import { useEffect } from 'react';
 import {format} from "timeago.js";
+import { Link } from 'react-router-dom';
 
 export default function Post({ post }) {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -19,7 +20,7 @@ export default function Post({ post }) {
       // const res = await axios.get(`/users/${post.userId}`);
       console.log(post.userId);
       const res = await axios.get(`/users?userId=${post.userId}`);
-      console.log("res" + res);
+      console.log("res:" + res);
       setUser(res.data);
       // console.log(res.data);
     };
@@ -36,11 +37,13 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`/profile/${user.username}`}>
             <img 
               src={user.profilePicture || PUBLIC_FOLDER  + "/person/noAvatar.png"} 
               alt="" 
               className="postProfileImg"
             />
+            </Link>
             <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
