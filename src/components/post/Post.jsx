@@ -7,10 +7,8 @@ import { useEffect } from 'react';
 
 export default function Post({ post }) {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
-  // const user = Users.filter((user) => user.id === post.id)[0].username;
-  // console.log(user);
-  //  console.log(Users.filter((user) => user.id === post.id)[0].username);
-  const [like, setLike] = useState(post.like);
+
+  const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
 
@@ -63,7 +61,7 @@ export default function Post({ post }) {
               onClick={() => handleLike()}
             />
             <span className="postLikeCounter">
-              {like}がいいねを押した
+              {like}人がいいねを押した
             </span>
           </div>
           <div className="postBottomRight">
