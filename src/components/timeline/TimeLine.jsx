@@ -1,30 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./TimeLine.css";
 import Share from "../share/Share";
 import Post from '../post/Post';
 // import { Posts } from "../../dummyData";
 import axios from "axios";
 import { useState } from 'react';
-import { ConstructionOutlined } from '@mui/icons-material';
-
-
-
+import { AuthContext } from '../../state/AuthContext';
 
 export default function TimeLine({username}) {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AuthContext);
+
 // console.log(username);
   // usernameが更新される度レンダリング発火
   useEffect(() => {
     const fetchPosts = async () => {
       const response = username
         ? await axios.get(`/posts/profile/${username}`)
-        : await axios.get("/posts/timeline/642c1c0422abdc5da422d14f");
+        : await axios.get(`/posts/timeline/${user._id}`);
      
       // console.log(response);
-      setPosts(response.data);
+      setPosts(
+        response.data.sort((post1, post2) => {
+        return new Date(post2.createdAt) - new Date(post1.createdAt);
+        })
+      );
     };
     fetchPosts();
-  }, [username]);
+  }, [username, user._id]);
 
   return (
     <div className="timeline">

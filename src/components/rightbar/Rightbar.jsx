@@ -57,9 +57,9 @@ export default function Rightbar({ user }) {
         <h4 className='rightbarTitle'>あなたの友達s</h4>
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
-            <img 
+            <img
               src={PUBLIC_FOLDER + "/person/1.jpeg"}
-              art=""
+              alt=""
               className='rightbarFollowingImg'
             />
             <span className='rightbarFollowingName'>Shin Code</span>
@@ -67,7 +67,7 @@ export default function Rightbar({ user }) {
           <div className="rightbarFollowing">
             <img 
               src={PUBLIC_FOLDER + "/person/2.jpeg"}
-              art=""
+              alt=""
               className='rightbarFollowingImg'
             />
             <span className='rightbarFollowingName'>test user1</span>
@@ -75,7 +75,7 @@ export default function Rightbar({ user }) {
           <div className="rightbarFollowing">
             <img 
               src={PUBLIC_FOLDER + "/person/3.jpeg"}
-              art=""
+              alt=""
               className='rightbarFollowingImg'
             />
             <span className='rightbarFollowingName'>test user2</span>
@@ -83,7 +83,7 @@ export default function Rightbar({ user }) {
           <div className="rightbarFollowing">
             <img 
               src={PUBLIC_FOLDER + "/person/4.jpeg"}
-              art=""
+              alt=""
               className='rightbarFollowingImg'
             />
             <span className='rightbarFollowingName'>test user3</span>
@@ -91,7 +91,7 @@ export default function Rightbar({ user }) {
           <div className="rightbarFollowing">
             <img 
               src={PUBLIC_FOLDER + "/person/5.jpeg"}
-              art=""
+              alt=""
               className='rightbarFollowingImg'
             />
             <span className='rightbarFollowingName'>test user4</span>

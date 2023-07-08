@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import "./Topbar.css";
 import {
@@ -6,8 +6,13 @@ import {
   Notifications,
   Search,
 } from "@mui/icons-material";
+import { AuthContext } from "../../state/AuthContext";
 
-export default function topbar() {
+
+export default function Topbar() {
+  const { user } = useContext(AuthContext);
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -38,7 +43,15 @@ export default function topbar() {
           <Notifications/>
           <span className="topbarIconBadge">2</span>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImg" />
+        <Link to={`/profile/${user.username}`}>
+          <img 
+            src={
+              user.profilePicture 
+                ? PUBLIC_FOLDER + user.profilePicture
+                : PUBLIC_FOLDER + "/person/noAvatar.png"} 
+            alt="" 
+            className="topbarImg" />
+        </Link>
       </div>
       
     </div>

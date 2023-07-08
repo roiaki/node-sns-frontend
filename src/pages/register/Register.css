@@ -1,7 +1,7 @@
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 .loginWrapper {
     width: 70%;
     height: 70%;
-    background-color: #c5c6cb;
+    background-color: #ffffff;
     display: flex;
 }
 .loginLeft {
@@ -38,20 +38,20 @@
 .loginbox {
     height: 300px;
     padding: 20px;
-    background-color: white;
+    /* background-color: #fcfcfc; */
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.loginInput {
-    height: 40px;
-    border-radius: 10px;
+.registerInput {
+    height: 30px;
+    border-radius: 5px;
     border: 1px solid gray;
-    font-size: 18px;
+    font-size: 15px;
     padding-left: 20px;
-    margin-bottom: 10px;
+    margin: 10px,0px;
 }
 
 .loginInput:focus {
@@ -62,7 +62,7 @@
     height: 40px;
     border-radius: 10px;
     border: none;
-    background-color: #9ccdb1;
+    background-color:rgb(117,188,255);
     color: white;
     font-weight: 500;
     font-size: 20px;
@@ -93,4 +93,13 @@
     text-align: center;
     font-weight: 550;
     font-size: 20px;
+}
+
+.loginLink {
+    margin-top:10px;
+    text-decoration-line: none;
+}
+
+.loginText {
+    color:#7499de;
 }

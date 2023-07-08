@@ -1,15 +1,15 @@
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .loginWrapper {
-    width: 70%;
+    width: 110%;
     height: 70%;
-    background-color: #c5c6cb;
+    background-color: #ffffff;
     display: flex;
 }
 .loginLeft {
@@ -17,12 +17,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* background-color: #ffffff; */
 }
 .loginRight {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 .loginLogo {
@@ -38,7 +40,7 @@
 .loginbox {
     height: 300px;
     padding: 20px;
-    background-color: white;
+    /* background-color: ##fcfcfc; */
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -69,9 +71,8 @@
     cursor: pointer;
 }
 
-.loginForgot {
-    text-align: center;
-    color: #41428b;
+.passForgot {
+    color:#000000;
 }
 
 
@@ -92,4 +93,14 @@
     text-align: center;
     font-weight: 550;
     font-size: 20px;
+}
+
+.loginLink {
+    margin-top:10px;
+    text-decoration-line: none;
+    color: #000000;
+}
+
+.loginText {
+   
 }

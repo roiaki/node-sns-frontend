@@ -12,7 +12,7 @@ export default function Profile() {
 
   const [user, setUser] = useState({});
   const username = useParams().username;
-  console.log("username : " + username);
+  // console.log("username : " + username);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,7 +21,7 @@ export default function Profile() {
       // console.log(res.data);
     };
     fetchUser();
-  }, []);
+  }, [username]);
   return (
     <>
       <Topbar />
@@ -31,12 +31,16 @@ export default function Profile() {
           <div className="profileRightTop">
             <div className="profileCover">
               <img
-                src={user.coverPicture || PUBLIC_FOLDER + "/post/3.jpeg"}
+                src={
+                  user.coverPicture || PUBLIC_FOLDER + "/post/3.jpeg"}
                 alt=""
                 className="profileCoverImg"
               />
               <img
-                src={user.profilePicture || PUBLIC_FOLDER  + "/person/noAvatar.png"} 
+                src={
+                  PUBLIC_FOLDER + user.profilePicture
+                  || PUBLIC_FOLDER  + "/person/noAvatar.png"
+                } 
                 alt=""
                 className="profileUserImg"
               />

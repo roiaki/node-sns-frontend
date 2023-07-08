@@ -1,33 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./Post.css";
-import { MoreVert, Photo } from '@mui/icons-material';
-import { Users } from "../../dummyData";
+import { MoreVert } from '@mui/icons-material';
+// import { Users } from "../../dummyData";
 import axios from "axios";
 import { useEffect } from 'react';
 import {format} from "timeago.js";
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../state/AuthContext";
+
 
 export default function Post({ post }) {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({}); // 投稿したユーザー
+
+  // AuthContextから取得したuserの値をcurrentUserに代入
+  const { user: currentUser } = useContext(AuthContext);
 
   // 1回だけ誘発させる
   useEffect(() => {
     const fetchUser = async () => {
       // const res = await axios.get(`/users/${post.userId}`);
-      console.log(post.userId);
+      // console.log(post.userId);
       const res = await axios.get(`/users?userId=${post.userId}`);
-      console.log("res:" + res);
+      // console.log("res:" + res);
       setUser(res.data);
       // console.log(res.data);
     };
     fetchUser();
   }, [post.userId]);
 
-  const handleLike = () => {
+  const handleLike = async () => {
+    try {
+      // いいねAPIを叩くログインユーザーを渡す
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+    } catch (err) {
+      console.log(err);
+    }
+      
     setLike(isLiked ? like - 1 : like + 1 );
     setIsLiked(!isLiked);
   }
@@ -39,7 +51,11 @@ export default function Post({ post }) {
           <div className="postTopLeft">
             <Link to={`/profile/${user.username}`}>
             <img 
-              src={user.profilePicture || PUBLIC_FOLDER  + "/person/noAvatar.png"} 
+              src={
+                user.profilePicture
+                  ? PUBLIC_FOLDER + user.profilePicture
+                  : PUBLIC_FOLDER  + "/person/noAvatar.png"
+              } 
               alt="" 
               className="postProfileImg"
             />
